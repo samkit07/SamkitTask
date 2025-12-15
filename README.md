@@ -2,6 +2,12 @@
 
 This is a simple Android application that demonstrates a modern Android architecture for displaying a user's investment portfolio. The app fetches portfolio data from a mock API and displays the holdings along with a summary of the user's profit and loss.
 
+## 📸 Screenshot
+<img width = "250" height = "500" alt="Screenshot_20251215_133235" src="https://github.com/user-attachments/assets/25f55ea8-4a49-4880-bfe2-3d0aea1dd05b" />
+<img width = "250" height = "500" alt="Screenshot_20251215_133301" src="https://github.com/user-attachments/assets/af5fe82b-fc7e-42eb-8819-5683884e5725" />
+
+
+
 ## ✨ Features
 
 *   Displays a list of user's holdings.
