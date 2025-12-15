@@ -1,6 +1,7 @@
 package com.example.feature.portfolio.presentation.ui
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
@@ -19,8 +20,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -41,6 +44,11 @@ fun PortfolioSummaryScreen(
     isExpanded: Boolean,
     onToggleExpanded: () -> Unit
 ) {
+    val rotationAngle by animateFloatAsState(
+        targetValue = if (isExpanded) 180f else 0f,
+        animationSpec = tween(durationMillis = 300),
+        label = "arrowRotation"
+    )
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shadowElevation = 8.dp,
@@ -81,8 +89,9 @@ fun PortfolioSummaryScreen(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(text = "Profit & Loss*", fontWeight = FontWeight.SemiBold)
                 Icon(
-                    painter = painterResource(if (isExpanded) R.drawable.ic_arrow_down else R.drawable.ic_arrow_up),
-                    contentDescription = "Expand/Collapse"
+                    painter = painterResource(R.drawable.ic_arrow_up),
+                    contentDescription = "Expand/Collapse",
+                    modifier = Modifier.rotate(rotationAngle)
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Text(
